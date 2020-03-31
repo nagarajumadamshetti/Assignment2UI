@@ -57,7 +57,7 @@ export default class BoardGroup extends Component {
                                 <div>
 
                                   <Link to={{
-                                        pathname: `/boardGroup/${key}`,
+                                        pathname:`/board/${key}`,
                                         state: {
                                             data: this.state.boardData
                                         },

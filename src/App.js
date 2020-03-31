@@ -10,8 +10,8 @@ function App() {
     <Router>
       {/* <Login /> */}
       <Route path="" exact component={Login} />
-
-      <Route path="/boardGroup/:id" component={BoardItem} /> 
+      <Route path="/board" exact component={BoardGroup} />
+      <Route path="board/:id" component={BoardItem} /> 
     </Router>
  </div> );
 }

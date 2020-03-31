@@ -24,8 +24,8 @@ export default class BoardItem extends Component {
         let id = this.props.match.params
         console.log(id.id)
         this.setState({ id: id.id })
-        const { data } = this.props.location.state;
-        console.log(data)
+        // const { data } = this.props.location.state;
+        // console.log(data)
         // let load = data.find((e) => {
         //     return (e[id] === id)
         // })
@@ -36,7 +36,7 @@ export default class BoardItem extends Component {
             <Container>
                 <p>hello eh:   {this.state.id}</p>
                 {/* <p>{this.state.id}</p> */}
-            </Container>``
+            </Container>
         </div>
         );
     }
