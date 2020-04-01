@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import BoardGroup from './boardGroup'
+import Boards from './boards'
 import { Container, ButtonToggle, Col, Row, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
 class Login extends Component {
@@ -75,7 +75,7 @@ class Login extends Component {
             const obj = {
                 username: this.state.username,
                 password: this.state.password,
-                boards: {}
+                boards: []
             }
             localStorage.setItem(this.state.username, JSON.stringify(obj));
             this.setState({ click: !this.state.click });
@@ -99,11 +99,11 @@ class Login extends Component {
             <div className={styles.center}>
                 {this.state.click ?
                     (<div>
-                        <Button color="primary" onClick={this.handleClickLogout}>Logout</Button>
+                        <Button color="danger" onClick={this.handleClickLogout} style={{position: 'absolute', top: 5, right: 5}}>Logout</Button>
                         {
                             console.log("the username is : "+this.state.username)
                         }
-                        <BoardGroup username={this.state.username} password={this.state.password} />
+                        <Boards username={this.state.username} password={this.state.password} />
                     </div>)
                     :
                     // style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '30vh', alignContent: 'center' }}

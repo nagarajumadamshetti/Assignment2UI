@@ -1,19 +1,22 @@
-import React from 'react';
-import BoardItem from './components/boardItem';
+import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from './components/login';
-import BoardGroup from './components/boardGroup';
+import Boards from './components/boards';
+import Stages from './components/stages'
 import './App.css';
-       {/* <Route path="/boardGroup" exact component={BoardGroup} /> */}
-function App() {
-  return (<div>    
-    <Router>
-      {/* <Login /> */}
-      <Route path="" exact component={Login} />
-      <Route path="/board" exact component={BoardGroup} />
-      <Route path="board/:id" component={BoardItem} /> 
-    </Router>
- </div> );
+
+class App extends Component {
+  render() {
+    return (<div>
+      <Router>
+        <Login />
+        {/* <Route path="/" exact component={Login} /> */}
+        <Route path="/boards" exact component={Boards} />
+        {/* <Route path="/boards/:id"  exact component={Stages} /> */}
+      </Router>
+    </div>);
+  }
+
 }
 
 
