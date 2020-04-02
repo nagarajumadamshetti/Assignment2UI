@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Button, Label, Input, Container, ButtonToggle } from 'reactstrap';
+import { Form, Button,Row,Col, Label, Input, Container, ButtonToggle } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Stages from './stages';
@@ -62,27 +62,47 @@ export default class Boards extends Component {
         let boardData = JSON.parse(localStorage.getItem(this.props.username));
         this.setState({ boardData: boardData.boards });
     }
+    deleteBoard=(id)=>{
+        
+       this.state.boardData.splice(id,1);
+       this.setState({boardData:this.state.boardData})
+       let obj = {
+        username: this.state.username,
+        password: this.state.password,
+        boards:this.state.boardData
+    }
+    
+    localStorage.setItem(this.state.username, JSON.stringify(obj))
+    }
     render() {
         return (
             <div>
+                <span ><h1>{"hello : "+ this.props.username}</h1></span>
+                <br></br>
+                <br></br>
                 <Router>
                     {
                         this.state.displayBoards ? (
                             <Container>
+                                <Container style={{ border: '2px solid red' }}>
                                 <Form>
                                     <Label >Name</Label>
                                     <Input type="text" onChange={this.handleNewBoard}></Input>
                                     <ButtonToggle color="primary" onClick={this.handleSubmit}>add board</ButtonToggle>
                                 </Form>
+                                </Container>
+                                <br></br>
+                                <Container style={{ border: '2px solid black' }}>
                                 {
                                     this.state.boardData ? (
                                         // console.log(this.state.boardData)
-                                        (this.state.boardData).map((el) => {
+                                        (this.state.boardData).map((el,key) => {
                                             console.log(el)
 
                                             return (
                                                 <div>
-
+                                                    <Row>
+                                                        <Col sm={6}>
                                                     <Link onClick={this.showBoards} to={{
                                                         pathname: `/boards/${el.boardName}`,
                                                         state: {
@@ -94,13 +114,19 @@ export default class Boards extends Component {
                                                     }} >
                                                         {el.boardName}
                                                     </Link>
+                                                    </Col>
+                                                    <Col sm={6}>
 
+                                                    <Button outline color="warning" onClick={(key)=>this.deleteBoard(key)}> delete</Button>
+                                                    </Col>
+                                                    </Row>
                                                     <br></br>
                                                 </div>
                                             )
                                         })
                                     ) : null
                                 }
+                                </Container>
                             </Container>
 
                         )
