@@ -145,7 +145,8 @@ export default class Tasks extends Component {
                                             return (
                                                 <tr>
                                                     <td>
-                                                        {el?<a onClick={this.showTask}> <b>{el.taskName}</b></a>:null}
+                                                        {/* {el?<a onClick={this.showTask}> <b>{el.taskName}</b></a>:null} */}
+                                                        <a onClick={this.showTask}> <b>{el.taskName}</b></a>
                                                         <Modal isOpen={this.state.toggleShowTask} toggle={this.state.toggleShowTask} backdrop="static" >
                                                             <ModalHeader toggle={this.state.toggleShowTask}>Task Data</ModalHeader>
                                                             <ModalBody>

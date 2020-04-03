@@ -267,7 +267,7 @@ export default class stages extends Component {
     render() {
         return (
             <div>
-                <br></br>
+                {/* <br></br> */}
                 <Container
                  style={{
                     border: '2px solid black',

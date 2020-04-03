@@ -57,14 +57,14 @@ class Login extends Component {
         });
     }
 
-    handleClickSignUp = async() => {
+    handleClickSignUp = async () => {
         try {
             if (this.state.username === null || this.state.username === "") {
                 alert("enter valid user name ");
                 return;
             }
             if (this.state.password === null || this.state.password === "") {
-                alert("enter valid password "); 
+                alert("enter valid password ");
                 return;
             }
             let items = await JSON.parse(localStorage.getItem(this.state.username));
@@ -99,39 +99,41 @@ class Login extends Component {
             <div className={styles.center}>
                 {this.state.click ?
                     (<div>
-                        <Button color="danger" onClick={this.handleClickLogout} style={{position: 'absolute', top: 5, right: 5}}>Logout</Button>
+                        <Button color="danger" onClick={this.handleClickLogout} style={{ position: 'absolute', top: 5, right: 5 }}>Logout</Button>
                         {
-                            console.log("the username is : "+this.state.username)
+                            console.log("the username is : " + this.state.username)
                         }
                         <Boards username={this.state.username} password={this.state.password} />
                     </div>)
                     :
-                    // style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '30vh', alignContent: 'center' }}
                     (<div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80vh', alignContent: 'center' }}>
                         <Container >
                             <h2>Sign In</h2>
                             <Form >
-                                <Col  >
+                                <Col sm="6" >
                                     <FormGroup>
                                         <Label >USERNAME</Label>
                                         <Input type="text" placeholder="username" onChange={this.handleUserId} id="exampleEmail" />
                                     </FormGroup>
                                 </Col>
                                 {'  '}
-                                <Col >
+                                <Col sm="6">
                                     <FormGroup>
                                         <Label for="examplePassword" >PASSWORD</Label>
                                         <Input type="password" placeholder="Password" onChange={this.handlePassword} id="examplePassword" />
                                     </FormGroup>
                                 </Col>
                                 <Col>
-                                <Link to="/boardGroup">
-                                    <Button color="success" onClick={this.handleClickLogin}>
-                                        Sign in
-                                    </Button>
-                                    </Link>
+                                    <Col sm="3">
+                                        <FormGroup>
+                                            <Button color="success" onClick={this.handleClickLogin}>
+                                                Sign in
+                                             </Button>
+                                            {' '}
+                                            <ButtonToggle color='danger' onClick={this.handleClickSignUp}>SignUp</ButtonToggle>
+                                        </FormGroup>
+                                    </Col>
                                 </Col>
-                                <ButtonToggle color='danger' onClick={this.handleClickSignUp}>SignUp</ButtonToggle>                                
                             </Form>
                         </Container>
                     </div>)}
